@@ -1,0 +1,34 @@
+# Compiled output
+target/
+*.class
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+*.iml
+.vscode/settings.json
+.vscode/*.code-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Log
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+application-local.yml
+
+# Docker
+docker-compose.override.yml
