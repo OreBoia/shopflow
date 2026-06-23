@@ -1,10 +1,12 @@
 # ShopFlow — Contesto progetto per Claude Code
 
 ## Descrizione
+
 Backend REST per la gestione di un e-commerce.
 Progetto didattico del corso AI Experis.
 
 ## Stack tecnologico
+
 - Java 17
 - Spring Boot 3.2
 - PostgreSQL 15
@@ -14,6 +16,7 @@ Progetto didattico del corso AI Experis.
 - Flyway (migrazione DB)
 
 ## Struttura del progetto
+
 ```
 src/main/java/com/shopflow/
 ├── customer/     → gestione clienti (modello completo di riferimento)
@@ -25,6 +28,7 @@ src/main/java/com/shopflow/
 ```
 
 ## Convenzioni di naming
+
 - Entità JPA:        `[Entity].java`
 - Repository:        `[Entity]Repository.java`
 - Service:           `[Entity]Service.java`
@@ -34,6 +38,7 @@ src/main/java/com/shopflow/
 - Test:              `[Entity]ServiceTest.java`
 
 ## Regole obbligatorie
+
 - Tutte le eccezioni custom estendono `BaseAppException`
 - Non usare `null` come valore di ritorno → usare `Optional<T>`
 - Non usare `@Autowired` su campo → iniezione sempre via costruttore
@@ -43,9 +48,11 @@ src/main/java/com/shopflow/
 - Tutti i metodi pubblici nei Service devono avere Javadoc
 
 ## Package base
+
 `com.shopflow`
 
 ## Aree con TODO (esercizi del corso)
+
 - `order/OrderService.java` → aggiungere verifica stock e calcolo totale
 - `product/ProductService.java` → aggiungere Javadoc completo
 - `category/` → creare CategoryService e CategoryController
@@ -54,8 +61,10 @@ src/main/java/com/shopflow/
 - `legacy/LegacyOrderProcessor.java` → analizzare e refactorare
 
 ## Skills disponibili
+
 - `@generate-javadoc` → genera Javadoc per classi e metodi
 - `@create-unit-test` → genera test JUnit 5 + Mockito
 
 ## Agents disponibili
+
 - `@new-feature-agent` → crea una feature completa (entity + repo + service + controller + test)

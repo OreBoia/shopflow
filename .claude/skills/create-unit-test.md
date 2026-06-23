@@ -1,9 +1,11 @@
 # Skill: create-unit-test
 
 ## Obiettivo
+
 Generare test unitari JUnit 5 + Mockito per i Service di ShopFlow.
 
 ## Regole
+
 - Usare @ExtendWith(MockitoExtension.class)
 - Usare @Mock per i repository e @InjectMocks per il service
 - Usare assertThat() di AssertJ (non assertEquals di JUnit)
@@ -13,6 +15,7 @@ Generare test unitari JUnit 5 + Mockito per i Service di ShopFlow.
 - Verificare le interazioni con verify() di Mockito dove significativo
 
 ## Pattern da seguire
+
 @Test
 @DisplayName("[metodo()] dovrebbe [comportamento atteso] quando [condizione]")
 void nomeMetodo_shouldFareCosa_whenCondizione() {
@@ -29,6 +32,7 @@ void nomeMetodo_shouldFareCosa_whenCondizione() {
 }
 
 ## Esempio per eccezioni
+
 @Test
 @DisplayName("findById() dovrebbe lanciare eccezione quando non trovato")
 void findById_shouldThrowException_whenNotFound() {
@@ -40,6 +44,7 @@ void findById_shouldThrowException_whenNotFound() {
 }
 
 ## Struttura del file di test
+
 1. @ExtendWith e @DisplayName sulla classe
 2. @Mock per ogni dipendenza
 3. @InjectMocks per il service
