@@ -15,10 +15,6 @@ import java.util.List;
 /**
  * Service per la gestione degli ordini.
  *
- * NOTA PER IL DOCENTE:
- * Questo service è intenzionalmente incompleto per gli esercizi del corso.
- * Mancano due funzionalità da implementare con il supporto dell'AI:
- *
  * TODO (Esercizio Coding - Senior):
  *   1. Aggiungere la verifica e scalatura dello stock in createOrder()
  *      dopo la creazione di ogni OrderItem
@@ -93,12 +89,15 @@ public class OrderService {
             // TODO: scalare lo stock del prodotto dopo l'aggiunta dell'item
         }
 
-        // TODO: calcolare il totale sommando item.getSubtotal() per ogni item
-        //       e impostarlo con order.setTotal(...)
+        applyBusinessRulesForExercise(order);
 
         Order saved = orderRepository.save(order);
         log.info("Ordine creato con id: {}", saved.getId());
         return OrderResponse.from(saved);
+    }
+
+    // Placeholder per Esercizio 3 (Copilot vs Claude): implementare stock + totale.
+    private void applyBusinessRulesForExercise(Order order) {
     }
 
     public OrderResponse updateStatus(Long id, OrderStatus newStatus) {

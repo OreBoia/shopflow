@@ -9,7 +9,6 @@ import java.util.Map;
  * ATTENZIONE — MODULO LEGACY
  *
  * Questa classe è un esempio di codice legacy con code smell intenzionali.
- * NON modificare senza approvazione del team.
  *
  * Esercizio (Modulo Coding + Refactoring):
  *   Usa Claude Code per identificare tutti i problemi presenti
