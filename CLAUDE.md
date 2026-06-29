@@ -19,12 +19,23 @@ Progetto didattico del corso AI Experis.
 
 ```
 src/main/java/com/shopflow/
-├── customer/     → gestione clienti (modello completo di riferimento)
-├── product/      → gestione prodotti (documentazione mancante)
-├── order/        → gestione ordini (logica parziale da completare)
-├── category/     → categorie (service e controller mancanti - esercizio)
+├── customer/     → gestione clienti (completo: Entity, Repository, Service, Controller, DTO)
+├── product/      → gestione prodotti (completo: Entity, Repository, Service, Controller, DTO)
+├── order/        → gestione ordini (completo: Entity, Repository, Service, Controller, DTO, OrderStatus, OrderItem)
+├── category/     → categorie (Entity + Repository pronti, Service/Controller mancanti - esercizio)
+├── storage/      → gestione inventario (completo: Entity, Repository, Service, Controller, DTO)
 ├── legacy/       → codice legacy con code smell - NON modificare senza approvazione
 └── shared/       → eccezioni comuni e configurazioni
+
+src/test/java/com/shopflow/
+├── customer/     → CustomerServiceTest (3/8 test scritti, 5 mancanti - esercizio)
+├── product/      → ProductServiceTest (vuoto - esercizio)
+└── storage/      → StorageServiceTest (completo)
+
+starter-mancanti/
+├── category/     → template CategoryService e CategoryController per l'esercizio
+├── context/      → contesto e linee guida del progetto
+└── documentation/ → guide di implementazione
 ```
 
 ## Convenzioni di naming
@@ -53,12 +64,21 @@ src/main/java/com/shopflow/
 
 ## Aree con TODO (esercizi del corso)
 
-- `order/OrderService.java` → aggiungere verifica stock e calcolo totale
-- `product/ProductService.java` → aggiungere Javadoc completo
-- `category/` → creare CategoryService e CategoryController
-- `test/.../CustomerServiceTest.java` → completare i 5 test mancanti
-- `test/.../ProductServiceTest.java` → generare tutti i test da zero
-- `legacy/LegacyOrderProcessor.java` → analizzare e refactorare
+### Moduli
+
+- `product/ProductService.java` → aggiungere Javadoc a tutti i metodi pubblici (skill: @generate-javadoc)
+- `category/CategoryService.java` → implementare metodi CRUD (findAll, findById, save, update, delete) con Javadoc
+- `category/CategoryController.java` → implementare endpoint REST (GET, GET/{id}, POST, PUT/{id}, DELETE/{id})
+
+### Test
+
+- `test/customer/CustomerServiceTest.java` → completare i 5 test mancanti su 8 (skill: @create-unit-test)
+- `test/product/ProductServiceTest.java` → generare tutti i test da zero per ProductService (skill: @create-unit-test)
+- `test/category/CategoryServiceTest.java` → generare test per i metodi CRUD
+
+### Legacy
+
+- `legacy/LegacyOrderProcessor.java` → analizzare e refactorare il codice legacy
 
 ## Skills disponibili
 
