@@ -1,5 +1,8 @@
 package com.shopflow.shared.exception;
 
+import com.shopflow.payment.PaymentFailedException;
+import com.shopflow.payment.PaymentGatewayTimeoutException;
+import com.shopflow.payment.RefundNotAllowedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,6 +28,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<Map<String, Object>> handleInsufficientStock(InsufficientStockException ex) {
         return buildResponse(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage());
+    }
+
+    @ExceptionHandler(PaymentFailedException.class)
+    public ResponseEntity<Map<String, Object>> handlePaymentFailed(PaymentFailedException ex) {
+        return buildResponse(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage());
+    }
+
+    @ExceptionHandler(PaymentGatewayTimeoutException.class)
+    public ResponseEntity<Map<String, Object>> handlePaymentTimeout(PaymentGatewayTimeoutException ex) {
+        return buildResponse(HttpStatus.GATEWAY_TIMEOUT, ex.getMessage());
+    }
+
+    @ExceptionHandler(RefundNotAllowedException.class)
+    public ResponseEntity<Map<String, Object>> handleRefundNotAllowed(RefundNotAllowedException ex) {
+        return buildResponse(HttpStatus.CONFLICT, ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
