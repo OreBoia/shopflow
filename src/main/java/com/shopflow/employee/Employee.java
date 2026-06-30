@@ -7,6 +7,7 @@ import java.time.LocalDate;
 /**
  * Entità che rappresenta un dipendente dell'azienda nel sistema ShopFlow.
  * Mantiene l'anagrafica del dipendente, il ruolo, la retribuzione e la data di assunzione.
+ * Versione aggiornata per test hook pre-commit.
  */
 @Entity
 @Table(name = "employees")
