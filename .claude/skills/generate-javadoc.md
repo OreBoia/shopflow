@@ -2,7 +2,7 @@
 
 ## Obiettivo
 
-Generare documentazione Javadoc completa per classi e metodi Java di ShopFlow.
+Generare documentazione Javadoc completa per classi e metodi Java.
 
 ## Regole
 

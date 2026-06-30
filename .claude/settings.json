@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "agent",
+            "if": "Bash(git commit*)",
+            "statusMessage": "Validazione convenzioni ShopFlow in corso...",
+            "timeout": 60,
+            "prompt": "Stai per eseguire un commit git. Prima di procedere, devi validare i file Java modificati secondo le convenzioni ShopFlow.\n\n## Passo 1: Trova i file staged\nEsegui `git diff --cached --name-only --diff-filter=ACM` per ottenere i file Java staged (filtra solo i `.java`).\n\nSe non ci sono file `.java` staged, rispondi con `{\"decision\": \"allow\"}` e fermati.\n\n## Passo 2: Leggi e valida ogni file Java\nPer ogni file `.java` trovato, leggilo e verifica le seguenti regole (dalla skill validate-conventions del progetto ShopFlow):\n\n**[1] Iniezione dipendenze**\n- VIETATO: `@Autowired` su campo (es. `@Autowired private Repo r;`)\n- CORRETTO: costruttore senza `@Autowired` (Spring lo gestisce da solo)\n\n**[2] Valori di ritorno**\n- VIETATO: `return null` in metodi pubblici\n- CORRETTO: usare `Optional<T>`\n\n**[3] Logger SLF4J**\n- Ogni classe che usa log deve dichiarare: `private static final Logger log = LoggerFactory.getLogger(NomeClasse.class);`\n- VIETATO: `System.out.println`, `System.err.println`, `e.printStackTrace()`\n\n**[4] Eccezioni custom**\n- Tutte le eccezioni custom devono estendere `BaseAppException`\n- VIETATO: `throw new RuntimeException(...)` o `throw new Exception(...)` nei Service\n- ACCETTATO: `throw new IllegalArgumentException(...)` per validazione input\n\n**[5] Query sicure**\n- VIETATO: concatenazione di stringhe in query SQL\n- CORRETTO: Spring Data o `@Query` con parametri nominali\n\n**[6] Gestione errori REST**\n- VIETATO: esporre `e.getMessage()` direttamente nelle risposte JSON\n- CORRETTO: tutto gestito via `GlobalExceptionHandler`\n\n**[7] Javadoc nei Service**\n- Tutti i metodi `public` in classi `@Service` devono avere Javadoc con descrizione, `@param`, `@return`, `@throws`\n\n**[8] Naming conventions**\n- Entity: `[Nome].java`, Repository: `[Nome]Repository.java`, Service: `[Nome]Service.java`\n- Controller: `[Nome]Controller.java`, DTO input: `[Nome]Request.java`, DTO output: `[Nome]Response.java`\n- Test: `[Nome]ServiceTest.java`\n\n## Passo 3: Decidi\n\nSe NESSUNA violazione trovata → rispondi con JSON:\n```json\n{\"decision\": \"allow\", \"reason\": \"Tutti i file rispettano le convenzioni ShopFlow.\"}\n```\n\nSe CI SONO violazioni → rispondi con JSON:\n```json\n{\"decision\": \"block\", \"reason\": \"VIOLAZIONI TROVATE:\\n[elenco dettagliato con file, riga e regola violata]\\n\\nCorreggi le violazioni prima di fare il commit.\"}\n```\n\nRispondi SOLO con il JSON, nessun testo aggiuntivo."
+          }
+        ]
+      }
+    ]
+  }
+}

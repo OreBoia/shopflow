@@ -17,7 +17,7 @@ Progetto didattico del corso AI Experis.
 
 ## Struttura del progetto
 
-```
+```text
 src/main/java/com/shopflow/
 ├── customer/     → gestione clienti (completo: Entity, Repository, Service, Controller, DTO)
 ├── product/      → gestione prodotti (completo: Entity, Repository, Service, Controller, DTO)
@@ -84,6 +84,9 @@ starter-mancanti/
 
 - `@generate-javadoc` → genera Javadoc per classi e metodi
 - `@create-unit-test` → genera test JUnit 5 + Mockito
+- `@validate-conventions` → verifica che un file/modulo rispetti tutte le regole obbligatorie del progetto
+- `@refactor-legacy` → analizza code smell e produce versione refactored (presentare proposta prima di applicare)
+- `@explain-module` → spiega architettura, relazioni JPA, endpoint e flusso di un modulo (uso didattico)
 
 ## Agents disponibili
 
