@@ -1,25 +1,33 @@
 spring:
+  profiles:
+    default: dev
+
   application:
     name: shopflow
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/shopflow
-    username: shopflow
-    password: shopflow
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:h2:mem:shopflow;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
 springdoc:
   api-docs:
@@ -28,4 +36,4 @@ springdoc:
     path: /swagger-ui.html
 
 server:
-  port: 8080
+  port: 8081
