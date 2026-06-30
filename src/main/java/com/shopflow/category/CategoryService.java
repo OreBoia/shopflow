@@ -60,9 +60,16 @@ public class CategoryService {
      *
      * @param request i dati della categoria da creare
      * @return la categoria creata
+     * @throws IllegalArgumentException se il nome categoria esiste gia
      */
     public CategoryResponse save(CategoryRequest request) {
         log.info("Creazione nuova categoria con nome: {}", request.getName());
+
+        if (categoryRepository.existsByName(request.getName())) {
+            throw new IllegalArgumentException(
+                    "Esiste gia una categoria con nome: " + request.getName());
+        }
+
         Category category = new Category();
         category.setName(request.getName());
         category.setDescription(request.getDescription());
